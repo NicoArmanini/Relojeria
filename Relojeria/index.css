@@ -80,5 +80,31 @@ nav{
         top: 50%;
         padding: 0;
     }
-
 }
+
+.info-box {
+    width: 400px;
+    height: 400px;
+    margin: 150px;
+    overflow: hidden;
+}
+
+.info-box ul {
+    display:flex;
+    padding: 0;
+    width: 400%;
+}
+
+.info-box li{
+    list-style: none;
+    width: 100%;
+    position: relative;
+}
+
+.texto-box {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    margin-left: 20px;
+}
+
