@@ -66,7 +66,7 @@ nav{
     100% {margin-left: -300%;}
 }
 
-@media(max-width:991) {
+ /* @media(max-width:991) {
 
     body{
         padding: 30px;
@@ -81,6 +81,7 @@ nav{
         padding: 0;
     }
 }
+*/
 
 .info-box {
     width: 400px;
@@ -102,9 +103,15 @@ nav{
 }
 
 .texto-box {
+    position:relative;
+    width: 1000px;
+    height: 1000px;
+    
+}
+
+.texto-box p{
     position: relative;
-    width: 350px;
-    height: 350px;
-    margin-left: 20px;
+    float: right;
+    
 }
 
