@@ -1,4 +1,4 @@
-
+/*
 * {
     margin: 0;
     padding: 0;
@@ -66,7 +66,7 @@ nav{
     100% {margin-left: -300%;}
 }
 
- /* @media(max-width:991) {
+  @media(max-width:991) {
 
     body{
         padding: 30px;
@@ -81,9 +81,9 @@ nav{
         padding: 0;
     }
 }
-*/
 
-.info-box {
+
+ .info-box {
     width: 400px;
     height: 400px;
     margin: 150px;
@@ -114,4 +114,4 @@ nav{
     float: right;
     
 }
-
+ */ 

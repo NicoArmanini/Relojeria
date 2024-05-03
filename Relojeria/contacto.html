@@ -3,18 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="contacto.css">
-    <title>Relojes Nico</title>
+    <link rel="stylesheet" href="./css/contacto.css">
+    <title>GoodTime</title>
 </head>
 <body>
-    <h1>Nuestro Contacto</h1>
-    <nav>
-        <a href="index.html">Inicio</a>
-        <a href="relojes.html">Relojes</a>
-        <a href="contacto.html">Contacto</a>
-    </nav>
-    <img src="Relojeria/Imagenes/Rolex.jpg" alt="">
-    
+    <header>
+        <h1>GoodTime</h1>
+        <nav>
+            <a href="./index.html">Inicio</a>
+            <a href="./relojes.html">Relojes</a>
+            <a href="./contacto.html">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Contacto</h2>
+
+        <div>
+            <ul>
+                <img src="./imagenes/inicio-omegaConstellation.avif" alt="" height="400">
+                <p>En que te podemos ayudar?</p>
+                <a href="tel:+543573413386">+54 3573413386</a>
+                <a href="mailto:armanininico@gmail.com">armanininico@gmail.com</a>
+            </ul>
+        </div>
+
+        <div>
+            <form action="">
+                <fieldset>
+                    <legend>Datos Personales</legend>
+                    <label for="nombre">Nombre</label>
+                    <br>
+                    <input id="nombre" type="text" placeholder="Nicolas">
+                    <br>
+                    <label for="apellido">Apellido</label>
+                    <br>
+                    <input id="apellido" type="text" placeholder="Armanini">
+                    <br>
+                    <label for="email">Email</label>
+                    <br>
+                    <input type="email" name="Email" id="email" placeholder="armanininico@gmail.com">
+                    <br>
+                    <label for="telefono">Telefono</label>
+                    <br>
+                    <input type="tel" name="Telefono" id="telefono">
+                    <br>
+                    <label for="mensaje">Mensaje</label>
+                    <br>
+                    <input id="mensaje" type="text">
+                    <button type="submit">Contactar</button>  <!-- al tocar este btn aparece una ventana emergente que dice que el mensaje ha sido enviado correctamente--> 
+                </fieldset>
+            </form>
+        </div>
+    </main>
+
     <footer>
         <nav>
             <a href="index.html">Nosotros</a>
