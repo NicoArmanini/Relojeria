@@ -1,0 +1,19 @@
+.dark-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Puedes ajustar el nivel de opacidad aquí */
+    z-index: 1000; /* Asegura que la capa oscura esté encima de todo */
+    display: none; /* Oculta inicialmente la capa oscura */
+}
+
+ /* Estilo para la ventana emergente */
+ dialog {
+    width: 300px;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

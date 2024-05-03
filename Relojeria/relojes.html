@@ -22,9 +22,44 @@
         <h3>Mis Produtos</h3>
         <fieldset>
             <div>
-                <button type="submit">Continuar Pedido</button>
+                <button onclick="document.getElementById('myDialog').showModal()">Continuar con mi Pedido</button>
             </div>
         </fieldset>
+
+        <dialog id="myDialog">
+            <form action="">
+                    <h2>Finalizar Pedido</h2>
+                    <h3>Datos del Destinatario</h3>
+                    <label for="email">Email</label>
+                    <br>
+                    <input type="email" name="email" id="email" placeholder="armanininico@gmail.com">
+                    <br>
+                    <label for="apellido">Apellido</label>
+                    <br>
+                    <input type="text" name="" id="text" placeholder="Armanini">
+                    <br>
+                    <label for="nombre">Nombre</label>
+                    <br>
+                    <input type="text" name="" id="nombre" placeholder="Nicolas">
+                    <br>
+                    <label for="dni">DNI</label>
+                    <br>
+                    <input type="text" name="" id="dni" placeholder="45244320">
+                    <br>
+                    <label for="ciudad">Ciudad</label>
+                    <br>
+                    <input type="text" name="" id="ciudad" placeholder="Cordoba">
+                    <br>
+                    <label for="calle">Calle/Numero/Departamento</label>
+                    <br>
+                    <input type="text" name="" id="calle" placeholder="Rondeau 538/3e">
+                    <br>
+                    <br>
+                    <button type="submit">Confirmar</button>
+            </form>
+            <button onclick="document.getElementById('myDialog').close()">Cerrar</button>
+        </dialog>
+        <div class="dark-overlay" onclick="document.getElementById('myDialog').close()"></div>
 
         <img src="./imagenes/citizen-sportAutomatic.png" alt="">
         <div class="CitizenSport">

@@ -46,15 +46,22 @@
                     <br>
                     <label for="telefono">Telefono</label>
                     <br>
-                    <input type="tel" name="Telefono" id="telefono">
+                    <input type="tel" name="Telefono" id="telefono" placeholder="3573413386">
                     <br>
                     <label for="mensaje">Mensaje</label>
                     <br>
                     <input id="mensaje" type="text">
-                    <button type="submit">Contactar</button>  <!-- al tocar este btn aparece una ventana emergente que dice que el mensaje ha sido enviado correctamente--> 
+                    <br>
+                    <br>
                 </fieldset>
             </form>
+            <button onclick="document.getElementById('myDialog').showModal()">Contactar</button>
         </div>
+        <dialog id="myDialog">
+            <h4>Su mensaje ha sido enviado correctamente!</h4>
+            <button onclick="document.getElementById('myDialog').close()">Cerrar</button>
+        </dialog>
+        <div class="dark-overlay" onclick="document.getElementById('myDialog').close()"></div>
     </main>
 
     <footer>
