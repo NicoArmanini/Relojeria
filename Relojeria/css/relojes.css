@@ -1,5 +1,50 @@
 * {
-    
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: serif;
+}
+
+.encabezado{
+    font-weight: bold;
+    background-color: #577B8D;
+    border-bottom-style: solid;
+    border-width: 3px;
+}
+
+.principal{
+    background-color: #F0ECE5;
+}
+
+.pie{
+    padding-top: 25px;
+    background-color: #9db7c3;
+    border-top-style:solid;
+    border-width: 3px;
+}
+
+.pie nav{
+    text-align: left;
+}
+
+h1{
+    text-align: center;
+    font-size: 60px;
+}
+
+nav{
+    text-align: right;
+    font-size: larger;
+    padding: 35px;
+    text-decoration: none;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+nav a{
+    color: black;
+    text-decoration: none;
 }
 
 img {
@@ -7,8 +52,99 @@ img {
     width: 300px;
 }
 
+h2{
+    text-align: center;
+    padding-top: 50px;
+    font-size: 35px;
+}
+
+#fijo {
+    position: fixed;
+    top: 50%;  /* Ajusta la posición vertical */
+    right: 0;  /* Posiciona el div en el borde derecho */
+    transform: translateY(-50%);  /* Centra verticalmente */
+    width: 300px;  /* Ancho del div */
+    height: 500px;
+    padding: 10px;
+    background-color: #f0f0f0;  /* Color de fondo */
+    box-shadow: -4px 4px 5px rgba(0, 0, 0, 0.1);  /* Sombra */
+    border-radius: 5px;  /* Bordes redondeados */
+    text-align: center;  /* Centrar texto */
+}
+
+#fijo h3 {
+    margin-top: 10px;
+}
+
+#fijo fieldset {
+    border: none;  /* Sin borde */
+    padding: 0;
+    margin: 0;
+}
+
+.contenido {
+    margin-right: 220px;  /* Espacio para el div fijo */
+    padding: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #3b82cd;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.producto-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    padding-right: 350px;
+}
+
+.producto {
+    flex: 1;
+    min-width: 150px;
+    max-width: 30%;
+    box-sizing: border-box;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.producto img {
+    max-width: 100%;
+    height: auto;
+}
+
+.producto h4 {
+    margin: 10px 0;
+}
+
+.producto p {
+    color: #333;
+    font-weight: bold;
+}
+
+.producto input {
+    width: 50px;
+    text-align: center;
+    
+}
+
+
  /* Estilo para el fondo oscuro detrás de la ventana emergente */
- .dark-overlay {
+.dark-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -19,11 +155,55 @@ img {
     display: none; /* Oculta inicialmente la capa oscura */
 }
 /* Estilo para la ventana emergente */
-dialog {
-    width: 700px;
-    height: 700px;
-    padding: 20px;
-    background-color: rgb(255, 255, 255);
+#myDialog {
+    width: 400px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#myDialog h2{
+   padding-top: 5px;
+}
+
+#myDialog h3{
+    padding-top: 35px;
+}
+
+#myDialog label {
+    display: block;
+    padding-top: 15px;
+}
+
+#myDialog input {
+    width: calc(100% - 12px);
+    padding: 5px;
+    margin-bottom: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+#myDialog .boton-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#myDialog .boton-container button {
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+
+#myDialog .boton-container button:hover {
+    background-color: #0056b3;
 }

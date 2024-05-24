@@ -1,19 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: serif;
+}
+
+.encabezado{
+    font-weight: bold;
+    background-color: #577B8D;
+    border-bottom-style: solid;
+    border-width: 3px;
+}
+
+.principal{
+    background-color: #F0ECE5;
+}
+
+.pie{
+    padding-top: 25px;
+    background-color: #9db7c3;
+    border-top-style:solid;
+    border-width: 3px;
+}
+
+
+h1{
+    text-align: center;
+    font-size: 60px;
+}
+
+nav{
+    text-align: right;
+    font-size: larger;
+    padding: 35px;
+    text-decoration: none;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+nav a{
+    color: black;
+    text-decoration: none;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center; /* Centrar el contenido horizontalmente */
+    align-items: center; /* Centrar el contenido verticalmente */
+    height: auto; /* Hacer que el contenedor ocupe todo el alto de la ventana */
+    padding-bottom: 40px;
+}
+
+.image-container, .form-container {
+    flex: 0 0 25%; /* Establecer el ancho de los contenedores al 50% del contenedor principal */
+}
+
+.image-container {
+    text-align: center; /* Centrar el contenido de la imagen */
+    padding-top: 100px;
+}
+
+.image-container img {
+    max-width: 100%; /* Asegurar que la imagen no exceda el ancho del contenedor */
+    height: 400px; /* Mantener la proporción de la imagen */
+    border-radius: 8px; /* Agregar bordes redondeados a la imagen */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agregar una sombra suave a la imagen */
+}
+
+.links {
+    margin-top: 20px; /* Agregar espacio entre la imagen y los enlaces */
+}
+
+.links p {
+    font-weight: bold; /* Hacer el texto de la pregunta más llamativo */
+}
+
+.links a {
+    display: block; /* Convertir los enlaces en bloques para que ocupen todo el ancho disponible */
+    margin-top: 5px; /* Agregar espacio entre los enlaces */
+    text-decoration: none; /* Quitar subrayado predeterminado de los enlaces */
+    color: #333; /* Cambiar el color del texto de los enlaces */
+}
+
+.links a:hover {
+    color: #555; /* Cambiar el color del texto al pasar el cursor sobre los enlaces */
+}
+
+.form-container {
+    text-align: center; /* Centrar el contenido del formulario */
+}
+
+form {
+    max-width: 400px; /* Limitar el ancho del formulario */
+    margin-top: 5px; /* Agregar espacio entre la imagen y el formulario */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+    width: (100%);
+    padding: 10px; /* Agregar espacio dentro de los campos de entrada */
+    margin-bottom: 10px; /* Agregar espacio entre los campos de entrada */
+    border: 1px solid #ccc; /* Agregar borde a los campos de entrada */
+    border-radius: 5px; /* Agregar bordes redondeados a los campos de entrada */
+    box-sizing: border-box; /* Incluir el padding y el borde en el ancho total del campo de entrada */
+}
+
+button {
+    background-color: #007bff; /* Cambiar el color de fondo del botón */
+    color: #fff; /* Cambiar el color del texto del botón */
+    border: none; /* Quitar el borde del botón */
+    border-radius: 5px; /* Agregar bordes redondeados al botón */
+    padding: 10px 20px; /* Agregar espacio dentro del botón */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+    margin-bottom: 20px;
+    
+}
+
+button:hover {
+    background-color: #0056b3; /* Cambiar el color de fondo del botón al pasar el cursor */
+}
+
 .dark-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Puedes ajustar el nivel de opacidad aquí */
-    z-index: 1000; /* Asegura que la capa oscura esté encima de todo */
-    display: none; /* Oculta inicialmente la capa oscura */
+    position: fixed; /* Posicionar la superposición fija en la ventana */
+    top: 0; /* Estirar la superposición a la parte superior */
+    left: 0; /* Estirar la superposición a la izquierda */
+    width: 100%; /* Estirar la superposición al ancho completo */
+    height: 100%; /* Estirar la superposición al alto completo */
+    background-color: rgba(0, 0, 0, 0.5); /* Color de fondo oscuro semi-transparente */
+    z-index: 999; /* Asegurar que la superposición esté encima de otros elementos */
+    display: none; /* Ocultar la superposición por defecto */
 }
 
  /* Estilo para la ventana emergente */
- dialog {
-    width: 300px;
-    padding: 20px;
-    background-color: white;
-    border: 1px solid #ccc;
+#myDialog {
+    width: 400px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#myDialog .boton-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#myDialog .boton-container button {
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
     border-radius: 5px;
+    cursor: pointer;
+    
 }

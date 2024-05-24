@@ -1,17 +1,31 @@
-/*
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: lato;
+    font-family: serif;
 }
 
-body{
-    background-color:gainsboro;
+.encabezado{
+    font-weight: bold;
+    background-color: #577B8D;
+    border-bottom-style: solid;
+    border-width: 3px;
 }
 
-header{
-    background-color: darkgray;
+.principal{
+    background-color: #F0ECE5;
+}
+
+.pie{
+    margin-top: 75px;
+    background-color: #9db7c3;
+    border-top-style:solid;
+    border-width: 3px;
+}
+
+.pie nav{
+    text-align: left;
 }
 
 h1{
@@ -20,36 +34,46 @@ h1{
 }
 
 nav{
-    text-align: center;
+    text-align: right;
     font-size: larger;
-    margin: 20px 10px;
-    padding: 10px;
-    
+    padding: 35px;
+    text-decoration: none;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
 }
 
- .slider-box {
+nav a{
+    color: black;
+    text-decoration: none;
+}
+
+.slider-box {
     width: 1000px;
     height: auto;
-    margin: 50px auto 0;
+    padding-top: 50px;
+    margin: auto auto 0;
     overflow: hidden;
+    border-color: black;
 }
 
 .slider-box ul {
     display:flex;
-    padding: 0;
+    padding: auto;
     width: 400%;
-
     animation: mover 20s infinite alternate ease-in-out;
 }
 
 .slider-box li{
     list-style: none;
     width: 100%;
-    position: relative;
+   
 }
 
 .slider-box img {
     width: 100%;
+    border-style: solid;
+    border-width: 3px;
 } 
 
 @keyframes mover {
@@ -66,52 +90,119 @@ nav{
     100% {margin-left: -300%;}
 }
 
-  @media(max-width:991) {
-
-    body{
-        padding: 30px;
-    }
-
-    .slider-box{
-        width: 100%;
-    }
-
-    h1{
-        top: 50%;
-        padding: 0;
-    }
+.info-box{
+    display: flex;
+    align-items: center; /* Centra los items verticalmente */
+    justify-content: space-between; /* Espacia los items horizontalmente */
+    margin-top: 125px;
 }
 
-
- .info-box {
-    width: 400px;
-    height: 400px;
-    margin: 150px;
-    overflow: hidden;
+.imagen-box{
+    flex: 1;
+    margin-left: 550px;
 }
 
-.info-box ul {
-    display:flex;
-    padding: 0;
-    width: 400%;
+.imagen-box img{
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 3px;
 }
 
-.info-box li{
-    list-style: none;
-    width: 100%;
+.texto-box{
+    max-width: 700px; /* Asegura que la imagen no exceda el tamaño del contenedor */
+    height: 375px; /* Mantiene la proporción de la imagen */
+    font-size: 22px;
+    margin-right: 540px;
+    border: 3px solid black;
+    border-radius: 20px;
+    text-align:center;
+    overflow:auto;
+    word-wrap: break-word; /* Permite que las palabras largas se ajusten a la siguiente línea */
+    box-sizing: border-box;
+}
+
+.contenedor-imagen {
     position: relative;
+    margin-top: 120px;
 }
 
-.texto-box {
-    position:relative;
-    width: 300px;
-    height: 300px;
-    
+.contenedor-imagen img{
+    width: 2112px;
+    height: 500px;
+    border: 3px solid black;
 }
 
-.texto-box p{
-    position: relative;
-    float: right;
-    
+.texto-superpuesto {
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 10px;
 }
- */ 
+
+.texto-superpuesto p {
+    margin: 0;
+}
+
+.texto-superpuesto .enlace {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: white;
+    background-color: #3b82cd;
+    border-radius: 5px;
+}
+
+.texto-superpuesto .enlace:hover {
+    background-color: #0056b3;
+}
+
+/* Media queries para dispositivos de tamaño medio */
+@media screen and (max-width: 768px) {
+    .encabezado{
+        flex-direction: column;
+        width: 50%;
+    }
+
+    .principal {
+        margin: 5px 0;
+        width: 50%;
+        flex-direction: column;
+    }
+
+    .pie{
+        margin: 5px 0;
+        width: 50%;
+        flex-direction: column;
+    }
+
+}
+
+/* Media queries para dispositivos pequeños */
+@media screen and (max-width: 1024px) {
+    .encabezado {
+        display: flex;
+        flex-direction: row-reverse;
+        font-size: 24px;
+    }
+
+    .principal {
+        font-size: 14px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .texto-superpuesto {
+        padding: 8px 16px;
+    }
+
+    .texto-superpuesto .enlace {
+        padding: 6px 12px;
+    }
+}

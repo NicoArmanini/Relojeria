@@ -7,7 +7,7 @@
     <title>GoodTime</title>
 </head>
 <body>
-    <header>
+    <header class="encabezado">
         <h1>GoodTime</h1>
         <nav>
             <a href="index.html">Inicio</a>
@@ -16,15 +16,17 @@
         </nav>
     </header>
 
-    <main>
-        <h2>Todos los Produtos</h2>
+    <main class="principal">
+        <h2>Todos los Productos</h2>
 
-        <h3>Mis Produtos</h3>
-        <fieldset>
-            <div>
-                <button onclick="document.getElementById('myDialog').showModal()">Continuar con mi Pedido</button>
-            </div>
-        </fieldset>
+        <div id="fijo">
+            <h3>Mis Productos</h3>
+            <fieldset>
+                <div>
+                    <button onclick="document.getElementById('myDialog').showModal()">Continuar con mi Pedido</button>
+                </div>
+            </fieldset>
+        </div>
 
         <dialog id="myDialog">
             <form action="">
@@ -32,81 +34,91 @@
                     <h3>Datos del Destinatario</h3>
                     <label for="email">Email</label>
                     <br>
-                    <input type="email" name="email" id="email" placeholder="armanininico@gmail.com">
+                    <input type="email" name="email" id="email" placeholder="armanininico@gmail.com" required>
                     <br>
                     <label for="apellido">Apellido</label>
                     <br>
-                    <input type="text" name="" id="text" placeholder="Armanini">
+                    <input type="text" name="" id="text" placeholder="Armanini" required>
                     <br>
                     <label for="nombre">Nombre</label>
                     <br>
-                    <input type="text" name="" id="nombre" placeholder="Nicolas">
+                    <input type="text" name="" id="nombre" placeholder="Nicolas" required>
                     <br>
                     <label for="dni">DNI</label>
                     <br>
-                    <input type="text" name="" id="dni" placeholder="45244320">
+                    <input type="text" name="" id="dni" placeholder="45244320" required>
                     <br>
                     <label for="ciudad">Ciudad</label>
                     <br>
-                    <input type="text" name="" id="ciudad" placeholder="Cordoba">
+                    <input type="text" name="" id="ciudad" placeholder="Cordoba" required>
                     <br>
                     <label for="calle">Calle/Numero/Departamento</label>
                     <br>
-                    <input type="text" name="" id="calle" placeholder="Rondeau 538/3e">
+                    <input type="text" name="" id="calle" placeholder="Rondeau 538/3e" required>
                     <br>
                     <br>
-                    <button type="submit">Confirmar</button>
+                    <div class="boton-container">
+                        <button type="submit" onclick="document.getElementById('myDialog').showModal()">Confirmar</button>
+                        <button onclick="document.getElementById('myDialog').close()">Cerrar</button>
+                    </div>
+                    <dialog id="myDialog-respuesta">
+                        <h4>Su pedido ha sido confirmado correctamente!</h4>
+                        <button onclick="document.getElementById('myDialog-respuesta').close()">Cerrar</button>
+                        <div class="dark-overlay" onclick="document.getElementById('myDialog-respuesta').close()"></div>
+                    </dialog>
             </form>
-            <button onclick="document.getElementById('myDialog').close()">Cerrar</button>
         </dialog>
-        <div class="dark-overlay" onclick="document.getElementById('myDialog').close()"></div>
 
-        <img src="./imagenes/citizen-sportAutomatic.png" alt="">
-        <div class="CitizenSport">
-            <h4>Citizen Sport Automatic</h4>
-            <P>$487.50</P>
-            <input type="number" placeholder="1" value="1" min="1" >
+        <div class="producto-grid">
+            <div class="producto">
+                <img src="./imagenes/citizen-sportAutomatic.png" alt="">
+                <h4>Citizen Sport Automatic</h4>
+                <P>$487.50</P>
+                <input type="number" placeholder="1" value="1" min="1" >
+            </div>
+    
+            <div class="producto">
+                <img src="./imagenes/omegaConstellation.avif" alt="">
+                <h4>Omega Constellation</h4>
+                <P>$9200.00</P>
+                <input type="number" placeholder="1" value="1" min="1">
+            </div>
+    
+            <div class="producto">
+                <img src="./imagenes/casio-VD03L-1A.avif" alt="">
+                <h4>Casio MTP-VD03L-1A</h4>
+                <P>$60.50</P>
+                <input type="number" placeholder="1" value="1" min="1" >
+            </div>
         </div>
 
-        <img src="./imagenes/omegaConstellation.avif" alt="">
-        <div class="OmegaConstellation">
-            <h4>Omega Constellation</h4>
-            <P>$9200.00</P>
-            <input type="number" placeholder="1" value="1" min="1">
-        </div>
-
-        <img src="./imagenes/casio-VD03L-1A.avif" alt="">
-        <div class="Casio-vd03l">
-            <h4>Casio MTP-VD03L-1A</h4>
-            <P>$60.50</P>
-            <input type="number" placeholder="1" value="1" min="1" >
-        </div>
-
-        <img src="./imagenes/seiko-SPB381.png" alt="">
-        <div class="Seiko-SPB381">
-            <h4>Seiko SPB381</h4>
-            <P>$1800.00</P>
-            <input type="number" placeholder="1" value="1" min="1" >
-        </div>
-
-
-        <img src="./imagenes/valkur-Balder.webp" alt="">
-        <div class="Valkur-Balder">
-            <h4>Valkur Balder</h4>
-            <P>$92.90</P>
-            <input type="number" placeholder="1" value="1" min="1" >
-        </div>
-
-
-        <img src="./imagenes/tommy-Patrick.jpg" alt="">
-        <div class="TommyHilfiger-Patrick">
-            <h4>Tommy Hilfiger Patrick</h4>
-            <P>$190.00</P>
-            <input type="number" placeholder="1" value="1" min="1" >
+        <div class="producto-grid">
+            <div class="producto">
+                <img src="./imagenes/seiko-SPB381.png" alt="">
+                <h4>Seiko SPB381</h4>
+                <P>$1800.00</P>
+                <input type="number" placeholder="1" value="1" min="1" >
+            </div>
+    
+    
+            <div class="producto">
+                <img src="./imagenes/valkur-Balder-removebg-preview.png" alt="">
+                <h4>Valkur Balder</h4>
+                <P>$92.90</P>
+                <input type="number" placeholder="1" value="1" min="1" >
+            </div>
+    
+    
+            <div class="producto">
+                <img src="./imagenes/tommy-Patrick-removebg-preview.png" alt="">
+                <h4>Tommy Hilfiger Patrick</h4>
+                <P>$190.00</P>
+                <input type="number" placeholder="1" value="1" min="1" >
+            </div>
         </div>
     </main>
     
-    <footer>   
+    <footer class="pie">   
         <nav>
             <a href="index.html">Inicio</a>
             <a href="relojes.html">Relojes</a>
