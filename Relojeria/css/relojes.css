@@ -207,3 +207,134 @@ button:hover {
 #myDialog .boton-container button:hover {
     background-color: #0056b3;
 }
+/* Media Queries */
+@media (max-width: 1200px) {
+    .encabezado, .principal, .pie {
+        padding: 10px;
+    }
+
+    nav {
+        text-align: center;
+        padding: 10px;
+    }
+
+    .contenido {
+        margin-right: 0;
+    }
+
+    .producto-grid {
+        padding-right: 0;
+    }
+
+    #fijo {
+        width: 100%;
+        height: auto;
+        position: relative;
+        top: auto;
+        right: auto;
+        transform: none;
+        box-shadow: none;
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    nav {
+        font-size: medium;
+        gap: 10px;
+    }
+
+    .producto {
+        max-width: 45%;
+    }
+
+    #myDialog {
+        width: 90%;
+        padding: 20px;
+    }
+
+    #myDialog input {
+        width: calc(100% - 10px);
+    }
+
+    #fijo {
+        width: 100%;
+        height: auto;
+        position: relative;
+        top: auto;
+        right: auto;
+        transform: none;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .producto-grid {
+        padding-right: 0;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 530px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    nav {
+        font-size: small;
+        gap: 5px;
+    }
+
+    .producto {
+        max-width: 100%;
+    }
+
+    .producto img {
+        height: auto;
+        width: 100%;
+    }
+
+    button {
+        padding: 5px 10px;
+    }
+
+    #myDialog {
+        width: 95%;
+        padding: 15px;
+    }
+
+    #myDialog input {
+        width: calc(100% - 10px);
+    }
+
+    #fijo {
+        width: 100%;
+        height: auto;
+        position: relative;
+        top: auto;
+        right: auto;
+        transform: none;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .contenido {
+        margin-right: 0;
+    }
+
+    .producto-grid {
+        padding-right: 0;
+        flex-direction: column;
+    }
+}

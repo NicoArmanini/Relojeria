@@ -5,31 +5,30 @@
     font-family: serif;
 }
 
-.encabezado{
+.encabezado {
     font-weight: bold;
     background-color: #577B8D;
     border-bottom-style: solid;
     border-width: 3px;
 }
 
-.principal{
+.principal {
     background-color: #F0ECE5;
 }
 
-.pie{
+.pie {
     padding-top: 25px;
     background-color: #9db7c3;
-    border-top-style:solid;
+    border-top-style: solid;
     border-width: 3px;
 }
 
-
-h1{
+h1 {
     text-align: center;
     font-size: 60px;
 }
 
-nav{
+nav {
     text-align: right;
     font-size: larger;
     padding: 35px;
@@ -39,102 +38,106 @@ nav{
     justify-content: center;
 }
 
-nav a{
+nav a {
     color: black;
     text-decoration: none;
 }
 
-
 .container {
     display: flex;
-    justify-content: center; /* Centrar el contenido horizontalmente */
-    align-items: center; /* Centrar el contenido verticalmente */
-    height: auto; /* Hacer que el contenedor ocupe todo el alto de la ventana */
+    justify-content:center;
+    height: auto;
     padding-bottom: 40px;
+    margin-left: 100px;
 }
 
-.image-container, .form-container {
-    flex: 0 0 25%; /* Establecer el ancho de los contenedores al 50% del contenedor principal */
+.image-container,
+.form-container {
+    flex: 0 0 25%;
 }
 
 .image-container {
-    text-align: center; /* Centrar el contenido de la imagen */
+    text-align: center;
     padding-top: 100px;
 }
 
 .image-container img {
-    max-width: 100%; /* Asegurar que la imagen no exceda el ancho del contenedor */
-    height: 400px; /* Mantener la proporción de la imagen */
-    border-radius: 8px; /* Agregar bordes redondeados a la imagen */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agregar una sombra suave a la imagen */
+    max-width: 100%;
+    height: 400px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .links {
-    margin-top: 20px; /* Agregar espacio entre la imagen y los enlaces */
+    margin-top: 20px;
 }
 
 .links p {
-    font-weight: bold; /* Hacer el texto de la pregunta más llamativo */
+    font-weight: bold;
 }
 
 .links a {
-    display: block; /* Convertir los enlaces en bloques para que ocupen todo el ancho disponible */
-    margin-top: 5px; /* Agregar espacio entre los enlaces */
-    text-decoration: none; /* Quitar subrayado predeterminado de los enlaces */
-    color: #333; /* Cambiar el color del texto de los enlaces */
+    display: block;
+    margin-top: 5px;
+    text-decoration: none;
+    color: #333;
 }
 
 .links a:hover {
-    color: #555; /* Cambiar el color del texto al pasar el cursor sobre los enlaces */
+    color: #555;
 }
 
 .form-container {
-    text-align: center; /* Centrar el contenido del formulario */
+    display:block;
+    justify-content:center;
+    height: 400px;
 }
 
 form {
-    max-width: 400px; /* Limitar el ancho del formulario */
-    margin-top: 5px; /* Agregar espacio entre la imagen y el formulario */
+    width: 400px;
+    height: auto;
+    padding-top: 100px;
+    padding-left: 45px;
+    padding-right: 45px;
+    text-align: center;
 }
 
 input[type="text"],
 input[type="email"],
 input[type="tel"] {
-    width: (100%);
-    padding: 10px; /* Agregar espacio dentro de los campos de entrada */
-    margin-bottom: 10px; /* Agregar espacio entre los campos de entrada */
-    border: 1px solid #ccc; /* Agregar borde a los campos de entrada */
-    border-radius: 5px; /* Agregar bordes redondeados a los campos de entrada */
-    box-sizing: border-box; /* Incluir el padding y el borde en el ancho total del campo de entrada */
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
 button {
-    background-color: #007bff; /* Cambiar el color de fondo del botón */
-    color: #fff; /* Cambiar el color del texto del botón */
-    border: none; /* Quitar el borde del botón */
-    border-radius: 5px; /* Agregar bordes redondeados al botón */
-    padding: 10px 20px; /* Agregar espacio dentro del botón */
-    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
     margin-bottom: 20px;
-    
 }
 
 button:hover {
-    background-color: #0056b3; /* Cambiar el color de fondo del botón al pasar el cursor */
+    background-color: #0056b3;
 }
 
 .dark-overlay {
-    position: fixed; /* Posicionar la superposición fija en la ventana */
-    top: 0; /* Estirar la superposición a la parte superior */
-    left: 0; /* Estirar la superposición a la izquierda */
-    width: 100%; /* Estirar la superposición al ancho completo */
-    height: 100%; /* Estirar la superposición al alto completo */
-    background-color: rgba(0, 0, 0, 0.5); /* Color de fondo oscuro semi-transparente */
-    z-index: 999; /* Asegurar que la superposición esté encima de otros elementos */
-    display: none; /* Ocultar la superposición por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
 }
 
- /* Estilo para la ventana emergente */
 #myDialog {
     width: 400px;
     background-color: #fff;
@@ -160,5 +163,70 @@ button:hover {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+
+    .container {
+        margin-left: 20px;
+        margin-right: 20px;
+        flex-direction: column;
+    }
+
+    .image-container,
+    .form-container {
+        flex: 1 1 100%;
+    }
+
+    .form-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    form{
+        width: 400px;
+        height: auto;
+        padding-top: 20px;
+        padding-left: 45px;
+        padding-right: 45px;
+        padding-bottom: 20px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+  
+
+    .encabezado h1 {
+        font-size: 40px;
+    }
+
+    nav {
+        padding: 15px;
+    }
+
+    .container {
+        margin-left: 20px;
+        margin-right: 20px;
+        flex-direction: column;
+    }
+
+    .image-container,
+    .form-container {
+        flex: 1 1 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .encabezado h1 {
+        font-size: 30px;
+    }
+
+    nav {
+        padding: 10px;
+    }
 }
