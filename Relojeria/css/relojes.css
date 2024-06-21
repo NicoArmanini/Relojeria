@@ -2,7 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: serif;
+    font-family: Copperplate, Copperplate Gothic Light, fantasy;
+    list-style: none;
 }
 
 .encabezado{
@@ -60,16 +61,17 @@ h2{
 
 #fijo {
     position: fixed;
-    top: 50%;  /* Ajusta la posición vertical */
-    right: 0;  /* Posiciona el div en el borde derecho */
-    transform: translateY(-50%);  /* Centra verticalmente */
-    width: 300px;  /* Ancho del div */
-    height: 500px;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 320px;
+    height: 600px;
     padding: 10px;
-    background-color: #f0f0f0;  /* Color de fondo */
-    box-shadow: -4px 4px 5px rgba(0, 0, 0, 0.1);  /* Sombra */
-    border-radius: 5px;  /* Bordes redondeados */
-    text-align: center;  /* Centrar texto */
+    background-color: #f0f0f0;
+    box-shadow: -4px 4px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    text-align: left;
+    overflow-y: auto; /* Agrega un scroll vertical si es necesario */
 }
 
 #fijo h3 {
@@ -77,16 +79,40 @@ h2{
 }
 
 #fijo fieldset {
-    border: none;  /* Sin borde */
+    border: none;
     padding: 0;
     margin: 0;
+    max-height: calc(100% - 50px); /* Asegura que el fieldset ocupe el espacio disponible menos el header y padding */
+    overflow-y: auto; /* Agrega un scroll vertical si el contenido excede */
 }
 
-.contenido {
-    margin-right: 220px;  /* Espacio para el div fijo */
-    padding: 20px;
+/* Estilos para el carrito */
+#lista-carrito {
+    list-style-type: none;
+    padding: 0;
 }
 
+#lista-carrito li {
+    display: flex;
+    flex-direction: column; /* Alinea los elementos uno debajo del otro */
+    align-items: flex-start; /* Alinea los elementos a la izquierda */
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    width: 100%;
+    box-sizing: border-box; /* Incluye el padding y el border en el ancho total */
+}
+
+#lista-carrito li button {
+    background-color: #ff4d4d; /* Color para el botón eliminar */
+    margin-top: 10px; /* Espacio entre el botón y otros elementos */
+}
+
+#lista-carrito li span, #lista-carrito li button {
+    width: 100%; /* Asegura que cada elemento ocupe todo el ancho disponible */
+    margin: 2px 0; /* Margen para espacio entre elementos */
+}
+
+/* Mantén el CSS existente para los botones */
 button {
     padding: 10px 20px;
     background-color: #3b82cd;
@@ -100,26 +126,24 @@ button:hover {
     background-color: #0056b3;
 }
 
+.contenido {
+    margin-right: 220px;
+    padding: 20px;
+}
+
 .producto-grid {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    margin-right: 350px; /* Margen a la derecha */
+    margin-left: 25px;
     padding-bottom: 50px;
-    padding-top: 50px;
-    padding-right: 350px;
 }
 
 .producto {
-    flex: 1;
-    min-width: 150px;
-    max-width: 30%;
-    box-sizing: border-box;
+    border: 1px solid #ccc;
     padding: 10px;
     text-align: center;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .producto img {
@@ -137,10 +161,12 @@ button:hover {
 }
 
 .producto input {
-    width: 50px;
+    width: 35px;
+    height: 30px;
     text-align: center;
     
 }
+
 
 
  /* Estilo para el fondo oscuro detrás de la ventana emergente */
@@ -223,7 +249,8 @@ button:hover {
     }
 
     .producto-grid {
-        padding-right: 0;
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+        margin-right: 220px; /* Ajustar el margen a la derecha */
     }
 
     #fijo {
@@ -267,18 +294,21 @@ button:hover {
 
     #fijo {
         width: 100%;
-        height: auto;
-        position: relative;
-        top: auto;
-        right: auto;
+        position: static;
         transform: none;
         box-shadow: none;
-        border-radius: 0;
+        margin-bottom: 20px;
+    }
+    
+
+    .contenido {
+        margin-right: 0; /* Eliminar el margen a la derecha */
+        padding: 10px;
     }
 
     .producto-grid {
-        padding-right: 0;
-        flex-direction: column;
+        grid-template-columns: 1fr; /* Una columna */
+        margin-right: 0; /* Eliminar el margen a la derecha */
     }
 }
 
@@ -297,16 +327,16 @@ button:hover {
     }
 
     .producto {
-        max-width: 100%;
+        padding: 5px;
+    }
+
+    button {
+        padding: 8px 16px; /* Reducir el tamaño del botón */
     }
 
     .producto img {
         height: auto;
         width: 100%;
-    }
-
-    button {
-        padding: 5px 10px;
     }
 
     #myDialog {
@@ -338,3 +368,6 @@ button:hover {
         flex-direction: column;
     }
 }
+
+
+
