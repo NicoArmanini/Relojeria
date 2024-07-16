@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/contacto.css">
-    <script defer src="./js/index.js"></script>
     <title>GoodTime</title>
 </head>
 <body>
@@ -35,11 +34,11 @@
                         <legend>Datos Personales</legend>
                         <label for="nombre">Nombre</label>
                         <br>
-                        <input id="nombre" type="text" placeholder="Nicolas" required>
+                        <input id="nombre" name="nombre" type="text" placeholder="Nicolas" required>
                         <br>
                         <label for="apellido">Apellido</label>
                         <br>
-                        <input id="apellido" type="text" placeholder="Armanini" required>
+                        <input id="apellido" name="apellido" type="text" placeholder="Armanini" required>
                         <br>
                         <label for="email">Email</label>
                         <br>
@@ -51,7 +50,7 @@
                         <br>
                         <label for="mensaje">Mensaje</label>
                         <br>
-                        <input id="mensaje" type="text" required>
+                        <input id="mensaje" name="mensaje" type="text" required>
                         <br>
                         <br>
                         <button onclick="document.getElementById('myDialog').showModal()">Contactar</button>
