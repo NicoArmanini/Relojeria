@@ -8,7 +8,7 @@ export function agregarAlCarrito(producto, cantidad, carrito) {
         // Si el producto ya existe, incrementa su cantidad
         productoExistente.cantidad += cantidad;
     } else {
-        // Si el producto no existe, lo añade al carrito con la cantidad especificada
+        // Si el producto no existe, lo añade al carrito con la cantidad especificad
         carrito.push({ ...producto, cantidad });
     }
     // Retorna el carrito actualizado
@@ -44,7 +44,9 @@ export function actualizarCarrito(carrito, listaCarrito, totalCarrito) {
         listaCarrito.appendChild(li);
         // Suma el subtotal al total del carrito
         total += subtotal;
+        
     });
     // Actualiza el texto del total del carrito
+    
     totalCarrito.textContent = total.toFixed(2);
 }

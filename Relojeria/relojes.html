@@ -32,7 +32,7 @@
         </div>
 
         <dialog id="myDialog">
-            <form action="">
+            <form id="formulario-compra" class="form" action="relojes.html" method="GET">
                     <h2>Finalizar Pedido</h2>
                     <h3>Datos del Destinatario</h3>
                     <label for="email">Email</label>
@@ -60,16 +60,20 @@
                     <input type="text" name="calle" id="calle" placeholder="Rondeau 538/3e" required>
                     <br>
                     <br>
+                    <div id="lista-contenedor">
+                        <input type="hidden" id="carrito-datos" name="carrito-datos">
+                        <li id="lista-carrito"></li>
+                        <p hidden>Total: $<span id="total-carrito">0.00</span></p>
+                    </div>
                     <div class="boton-container">
-                        <button type="submit" onclick="document.getElementById('myDialog').showModal()">Confirmar</button>
+                        <button type="submit" id="confirmar-compra" onclick="document.getElementById('myDialog').showModal()">Confirmar</button>
                         <button onclick="document.getElementById('myDialog').close()">Cerrar</button>
                     </div>
-                    <dialog id="myDialog-respuesta">
-                        <h4>Su pedido ha sido confirmado correctamente!</h4>
-                        <button onclick="document.getElementById('myDialog-respuesta').close()">Cerrar</button>
-                        <div class="dark-overlay" onclick="document.getElementById('myDialog-respuesta').close()"></div>
-                    </dialog>
-            </form>
+                </form>
+                <dialog id="myDialog-respuesta">
+                    <h4>Su pedido ha sido confirmado correctamente!</h4>
+                    <button onclick="document.getElementById('myDialog-respuesta').close()">Cerrar</button>
+                </dialog>
         </dialog>
 
         <div class="producto-grid" id="id-productos">
