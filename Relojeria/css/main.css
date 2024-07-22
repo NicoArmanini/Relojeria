@@ -9,9 +9,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Copperplate, Copperplate Gothic Light, fantasy;
+    font-family:'Courier New', Courier, monospace
 }
-
 .encabezado{
     font-weight: bold;
     background-color: #577B8D;
