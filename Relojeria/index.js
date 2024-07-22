@@ -24,12 +24,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     formularioCompra.addEventListener('submit', (event) => {
     event.preventDefault(); // Prevenir el envío del formulario por defecto
 
+    let total = 0;
     // Crear un array con los detalles de cada producto en el carrito
     const detallesCarrito = carrito.map(producto => ({
         nombre: producto.nombre,
         cantidad: producto.cantidad,
         precioUnitario: producto.precio,
-        precioTotal: (producto.precio * producto.cantidad).toFixed(2) // Calcular el precio total por producto
+        subtotal: (producto.precio * producto.cantidad).toFixed(2), // Calcular el precio total por producto
+        precioFinal: total += (producto.precio * producto.cantidad) // Inicializo un variable en 0 para que luego a la misma se le sumen todos los subtotales y generar el precio final
     }));
 
     // Convertir los detalles del carrito a JSON y asignarlo a un campo oculto en el formulario
@@ -40,13 +42,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         carrito: detallesCarrito // Incluir los detalles del carrito en el objeto de datos de compra
     };
 
-    // Mostrar los datos de la compra en la consola para propósitos de prueba
-    console.log('Datos de la compra:', datosCompra);
-
     // Mostrar la confirmación de la compra en la misma página
     mostrarConfirmacionCompra(datosCompra);
 
-    formularioCompra.submit();
+     // Enviar el formulario
+     setTimeout(() => {
+        formularioCompra.submit();
+    }, 10000); // 20000 milisegundos = 20 segundos
     });
 
     
@@ -55,12 +57,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     const confirmacionDiv = document.createElement('div');
     confirmacionDiv.innerHTML = `
         <h2>Compra Confirmada</h2>
-        <p>Nombre: ${datosCompra.nombre}</p>
-        <p>Dirección: ${datosCompra.direccion}</p>
+        <h6>Esta ventana desaparecera luego de 15 segundos</h6><br>
         <h3>Detalles del Carrito</h3>
         <ul>
             ${datosCompra.carrito.map(item => `
-                <li>${item.nombre} - ${item.cantidad} x $${item.precioUnitario.toFixed(2)} = $${item.precioTotal}</li>
+                <span><b>Nombre:</b> ${item.nombre}</span><br>
+                <span><b>Precio Unitario:</b> $${item.precioUnitario.toFixed(2)}</span><br>
+                <span><b>Cantidad:</b> ${item.cantidad}</span><br>
+                <span><b>Subtotal:</b> $${item.subtotal}</span><br>
+                <span><b>Precio Final: $${item.precioFinal}</b></span><br><br>
             `).join('')}
         </ul>
     `;
@@ -74,7 +79,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // Mostrar el dialog de confirmación
     dialogConfirmacion.showModal();
-}
-
+     // Cerrar el dialog después de 20 segundos
+     setTimeout(() => {
+        dialogConfirmacion.close();
+    }, 15000); //  20000 milisegundos = 20 segundos
+    }
 
 });
