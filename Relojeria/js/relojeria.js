@@ -2,7 +2,8 @@
 export async function cargarProductos() {
     try {
         // Realiza una solicitud GET a la URL especificada para obtener los productos
-        const response = await fetch('http://localhost:3000/productos');
+        const response = await fetch('./productos.json');
+        console.log(response);  // Revisa los detalles de la respuesta
         
         // Verifica si la respuesta no es satisfactoria (código de estado no es 2xx)
         if (!response.ok) {
@@ -11,10 +12,10 @@ export async function cargarProductos() {
         }
         
         // Convierte la respuesta en un objeto JSON
-        const productos = await response.json();
-        
+        const data = await response.json();
         // Retorna los productos obtenidos
-        return productos;
+        return data.productos;
+
     } catch (error) {
         // Muestra un mensaje de error en la consola en caso de fallo
         console.error('Error:', error);
