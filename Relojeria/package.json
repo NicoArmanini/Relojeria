@@ -1,6 +1,9 @@
 {
   "devDependencies": {
-    "five-server": "^0.3.3"
+    "express": "^4.21.1",
+    "five-server": "^0.3.3",
+    "nodemon": "^3.1.7",
+    "postgre": "^0.1.8"
   },
   "name": "relojeria",
   "version": "1.0.0",
@@ -153,7 +156,8 @@
     "yallist": "^4.0.0"
   },
   "scripts": {
-    "start": "five-server"
+    "start": "five-server",
+    "dev": "nodemon app.mjs"
   },
   "author": "",
   "license": "ISC",

@@ -1,7 +1,7 @@
 // Importa la función cargarProductos desde el archivo relojeria.js
-import { cargarProductos } from './js/relojeria.js';
+import { cargarProductos } from './relojeria.js';
 // Importa la función renderizarProductos desde el archivo productos.js
-import { renderizarProductos } from './js/productos.js';
+import { renderizarProductos } from './productos.js';
 
 // Ejecuta la función cuando el documento ha terminado de cargar
 document.addEventListener('DOMContentLoaded', async () => {
@@ -86,3 +86,4 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
 });
+

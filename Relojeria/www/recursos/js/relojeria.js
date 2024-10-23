@@ -1,8 +1,9 @@
+
 // Exporta la función cargarProductos para que pueda ser utilizada en otros módulos
 export async function cargarProductos() {
     try {
         // Realiza una solicitud GET a la URL especificada para obtener los productos
-        const response = await fetch('./productos.json');
+        const response = await fetch('./recursos/productos/productos.json');
         console.log(response);  // Revisa los detalles de la respuesta
         
         // Verifica si la respuesta no es satisfactoria (código de estado no es 2xx)
