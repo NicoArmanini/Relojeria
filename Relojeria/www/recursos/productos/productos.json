@@ -36,5 +36,6 @@
             "imagen": "./recursos/imagenes/tommy-Patrick-removebg-preview.png",
             "precio": 190.00
         }
-    ]
+    ],
+    "ultimo_id": 6
 }

@@ -1,7 +1,7 @@
 // MVC - Controlador
 // Funciones encargadas de conectar el modelo con las vistas
 // Es un intermediario entre ambas capas
-import { modeloInsertarProducto, modeloObtenerProductoID, modeloObtenerProductos } from "./modelo.productos.mjs";
+import { modeloInsertarProducto, modeloModificarProducto, modeloObtenerProductoID, modeloObtenerProductos, modeloEliminarProducto} from "./modelo.productos.mjs";
 
 //LECTURA, GET
 async function controladorObtenerProductos(req, res){
@@ -37,13 +37,41 @@ async function controladorInsertarProductos(req, res){
         const datos = await modeloInsertarProducto(producto) 
         res.status(200).json(datos)  
     } catch (error) {
-        res.status(500).json({mensaje: 'Error en el servidor'})
+        res.status(500).json(error)
     }
 }
 
+// Actualizar un producto en controlador.productos
+async function controladorModificarProductos(req, res) {
+    try {
+        const id = req.params.id;
+        const producto = { ...req.body };
+        const datos = await modeloModificarProducto(id, producto);
+        if (datos) {
+            res.status(200).json(datos);
+        } else {
+            res.status(404).json({ mensaje: 'Producto no encontrado' });
+        }
+    } catch (error) {
+        res.status(500).json({ mensaje: 'Error en el servidor' });
+    }
+}
+
+// Eliminar un producto en controlador.productos
+async function controladorEliminarProducto(req, res) {
+    try {
+        const id = req.params.id;
+        await modeloEliminarProducto(id);
+        res.status(204).send(); 
+    } catch (error) {
+        res.status(500).json({ mensaje: 'Error en el servidor' });
+    }
+}
 
 
 export {
     controladorObtenerProducto,
     controladorObtenerProductos,
-    controladorInsertarProductos}
+    controladorInsertarProductos,
+    controladorModificarProductos,
+    controladorEliminarProducto}
