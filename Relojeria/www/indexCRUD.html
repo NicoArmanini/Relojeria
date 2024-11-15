@@ -7,201 +7,60 @@
     <title>Gestión de Productos</title>
 </head>
 <body>
-    <nav id="paginas">
-        <a href="./index.html">Inicio</a>
-        <a href="./relojes.html">Relojes</a>
-        <a href="./contacto.html">Contacto</a>
-    </nav>
-    <nav>
-        <a href="#agregarProducto">Agregar Producto</a>
-        <a href="#buscarProducto">Buscar y Modificar</a>
-        <a href="#eliminarProducto">Eliminar Producto</a>
-    </nav>
-    <h1>Administración de Productos</h1>
+    <header>
 
-    <!-- Mostrar todos los productos -->
-    <section id="productos">
-        <h2>Listado de Productos</h2>
+        <h1>GoodTime</h1>
+        <nav id="paginas">
+            <a href="./index.html">Inicio</a>
+            <a href="./relojes.html">Relojes</a>
+            <a href="./contacto.html">Contacto</a>
+            <a href="./indexCRUD.html">CURD</a>
+        </nav>
+        <nav>
+            <a href="#agregarProducto">Agregar Producto</a>
+            <a href="#buscarProducto">Buscar y Modificar</a>
+            <a href="#eliminarProducto">Eliminar Producto</a>
+        </nav>
+    </header>
+
+    
+    <h2>Administración de Productos</h2>
+
+    <section id="seccionProductos">
+        <h3>Productos Disponibles</h3>
+        <div id="productosContainer"></div>
     </section>
 
-    <!-- Sección para buscar y modificar producto por ID -->
-    <section id="buscarProducto">
-        <h2>Buscar y Modificar Producto por ID</h2>
-        <input type="number" id="searchId" placeholder="Ingrese el ID del producto">
-        <button id="buscarBtn">Buscar</button>
+    <section>
+        <h2>Buscar Producto por ID</h2>
+        <input type="text" id="searchId" placeholder="ID del producto">
+        <button onclick="buscarProducto()">Buscar</button>
         <p id="searchResult"></p>
-
-        <!-- Sección de modificación -->
-        <div id="modificarSeccion" style="display:none;">
-            <h3>Modificar Producto</h3>
-            <input type="text" id="modNombre" placeholder="Nuevo nombre">
-            <input type="number" id="modPrecio" placeholder="Nuevo precio">
-            <button id="modificarBtn">Modificar</button>
-            <p id="modResult"></p>
+        <div id="modificarSeccion" style="display: none;">
+            <input type="text" id="modNombre" placeholder="Nombre">
+            <input type="text" id="modPrecio" placeholder="Precio">
+            <input type="text" id="modImagen" placeholder="Imagen">
+            <button onclick="modificarProducto()">Modificar</button>
         </div>
     </section>
 
-    <!-- Sección para agregar un nuevo producto -->
-    <section id="agregarProducto">
-        <h2>Agregar Nuevo Producto</h2>
-        <input type="text" id="nombreProducto" placeholder="Nombre del producto">
-        <input type="number" id="precioProducto" placeholder="Precio del producto">
-        <input type="text" id="referenciaImagen" placeholder="Link de Referencia de Imagen de Producto">
-        <button id="agregarBtn">Agregar</button>
-        <p id="addResult"></p>
+    <section>
+        <h2>Agregar Producto</h2>
+        <input type="text" id="nuevoNombre" placeholder="Nombre">
+        <input type="text" id="nuevoPrecio" placeholder="Precio">
+        <input type="text" id="nuevoImagen" placeholder="Imagen">
+        <button onclick="crearProducto()">Crear</button>
     </section>
 
-    <!-- Sección para eliminar producto -->
-    <section id="eliminarProducto">
-        <h2>Eliminar Producto por ID</h2>
-        <input type="number" id="delId" placeholder="Ingrese el ID del producto">
-        <button id="eliminarBtn">Eliminar</button>
-        <p id="delResult"></p>
-    </section>
-    
 
-    <script>
-        // Obtener y mostrar todos los productos
-        async function consultarApi() {
-            try {
-                const datos = await fetch('http://localhost:3000/api/v1/productos');
-                const productos = await datos.json();
-
-                const contenedorProductos = document.getElementById('productos');
-                let HTML = '<h2>Listado de Productos</h2>';
-                productos.forEach((producto) => {
-                    HTML += `
-                        <article>
-                            <h3>Id:${producto.id}</h3>
-                            <h3>${producto.nombre}</h3>
-                            <div>Precio: $${producto.precio} </div>
-                            <button onclick="eliminarProducto(${producto.id})">Eliminar</button>
-                        </article>
-                    `;
-                });
-                contenedorProductos.innerHTML = HTML;
-            } catch (error) {
-                console.error('Error al obtener productos:', error);
-            }
-        }
-
-        // Buscar producto por ID para modificar
-        async function buscarProducto() {
-            const id = document.getElementById('searchId').value;
-            if (id) {
-                try {
-                    const datos = await fetch(`http://localhost:3000/api/v1/productos/${id}`);
-                    const producto = await datos.json();
-
-                    if (producto) {
-                        document.getElementById('searchResult').innerText = `ID: ${producto.id}, Nombre: ${producto.nombre}, Precio: $${producto.precio}`;
-                        //despliega la opcion para modificar producto
-                        document.getElementById('modificarSeccion').style.display = 'block'; 
-                        document.getElementById('modNombre').value = producto.nombre;
-                        document.getElementById('modPrecio').value = producto.precio;
-                    } else {
-                        document.getElementById('searchResult').innerText = 'Producto no encontrado';
-                        document.getElementById('modificarSeccion').style.display = 'none';
-                    }
-                } catch (error) {
-                    document.getElementById('searchResult').innerText = 'Error al buscar producto';
-                    console.error('Error al buscar producto:', error);
-                }
-            } else {
-                document.getElementById('searchResult').innerText = 'Ingrese un ID válido';
-            }
-        }
-
-        // Modificar un producto existente
-        async function modificarProducto() {
-            const id = document.getElementById('searchId').value;
-            const nombre = document.getElementById('modNombre').value;
-            const precio = document.getElementById('modPrecio').value;
-
-            if (nombre && precio && id) {
-                const productoModificado = { nombre, precio: parseFloat(precio) };
-
-                try {
-                    const response = await fetch(`http://localhost:3000/api/v1/productos/${id}`, {
-                        method: 'PUT',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(productoModificado)
-                    });
-
-                    if (response.ok) {
-                        document.getElementById('modResult').innerText = 'Producto modificado exitosamente';
-                        consultarApi();  // Actualizar la lista de productos
-                    } else {
-                        document.getElementById('modResult').innerText = 'Error al modificar el producto';
-                    }
-                } catch (error) {
-                    document.getElementById('modResult').innerText = 'Error al modificar el producto';
-                    console.error('Error al modificar el producto:', error);
-                }
-            } else {
-                document.getElementById('modResult').innerText = 'Complete todos los campos';
-            }
-        }
-
-        // Agregar un nuevo producto
-        async function agregarProducto() {
-            const nombre = document.getElementById('nombreProducto').value;
-            const precio = document.getElementById('precioProducto').value;
-
-            if (nombre && precio) {
-                const nuevoProducto = { nombre, precio: parseFloat(precio) };
-
-                try {
-                    const response = await fetch('http://localhost:3000/api/v1/productos', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(nuevoProducto)
-                    });
-
-                    if (response.ok) {
-                        document.getElementById('addResult').innerText = 'Producto agregado exitosamente';
-                        consultarApi();  // Actualizar la lista de productos
-                    } else {
-                        document.getElementById('addResult').innerText = 'Error al agregar el producto';
-                    }
-                } catch (error) {
-                    document.getElementById('addResult').innerText = 'Error al agregar el producto';
-                    console.error('Error al agregar el producto:', error);
-                }
-            } else {
-                document.getElementById('addResult').innerText = 'Complete todos los campos';
-            }
-        }
-
-        // Eliminar un producto por ID
-        async function eliminarProducto(id) {
-            if (id) {
-                try {
-                    const response = await fetch(`http://localhost:3000/api/v1/productos/${id}`, { method: 'DELETE' });
-
-                    if (response.ok) {
-                        document.getElementById('delResult').innerText = 'Producto eliminado exitosamente';
-                        consultarApi();  // Actualizar la lista de productos
-                    } else {
-                        document.getElementById('delResult').innerText = 'Error al eliminar el producto';
-                    }
-                } catch (error) {
-                    document.getElementById('delResult').innerText = 'Error al eliminar el producto';
-                    console.error('Error al eliminar el producto:', error);
-                }
-            } else {
-                document.getElementById('delResult').innerText = 'Ingrese un ID válido';
-            }
-        }
-
-        // Asignar eventos a los botones
-        document.getElementById('buscarBtn').addEventListener('click', buscarProducto);
-        document.getElementById('modificarBtn').addEventListener('click', modificarProducto);
-        document.getElementById('agregarBtn').addEventListener('click', agregarProducto);
-        document.getElementById('eliminarBtn').addEventListener('click', () => eliminarProducto(document.getElementById('delId').value));
-
-        // Llamar a la función de consulta para mostrar todos los productos al cargar la página
-        consultarApi();
-    </script>
+    <script src="./recursos/js/script.js"></script>
+    <!-- Eliminar Producto -->
+    <footer class="pie">   
+        <nav>
+            <a href="./index.html">Inicio</a>
+            <a href="./relojes.html">Relojes</a>
+            <a href="./contacto.html">Contacto</a>
+        </nav>
+    </footer>
 </body>
 </html>

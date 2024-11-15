@@ -1,0 +1,19 @@
+CREAR PRODUCTO
+
+1- Colocarle el nombre correspondient3e al modelo de reloj.
+
+2- colocar precio con 2 decimales
+
+3- agregar url de imagen del producto. Este previamente tuve que ser agregado en la carpeta de imagenes.
+
+
+
+ELIMINAR PRODUCTO
+
+-Para eliminar un producto presionar el boton de eliminar que se encuentra debajo de los datos de cada producto.
+
+
+
+MODIFICAR PRODUCTO
+
+-Para modificar un producto primero se necesita buscarlo por su ID. Luego de eso apareceran los datos de dicho producto y podrias modificar lo que desees siempre teniendo en cuenta las reglas de la creacion del mismo.

@@ -1,6 +1,7 @@
 // MVC - Controlador
 // Funciones encargadas de conectar el modelo con las vistas
 // Es un intermediario entre ambas capas
+
 import { modeloInsertarProducto, modeloModificarProducto, modeloObtenerProductoID, modeloObtenerProductos, modeloEliminarProducto} from "./modelo.productos.mjs";
 
 //LECTURA, GET
@@ -28,16 +29,18 @@ async function controladorObtenerProducto(req, res){
 }
 
 //ESCRITURA POST
-async function controladorInsertarProductos(req, res){
+async function controladorInsertarProductos(req, res) {
     try {
-        // const {nombre, descripcion, precio, categoria, disponibilidad, imagen} = req.body
-        const producto = {
-            ...req.body
+        const producto = { ...req.body };
+
+        if (!producto.nombre || !producto.precio || !producto.imagen) {
+            return res.status(400).json({ mensaje: 'Todos los campos son obligatorios' });
         }
-        const datos = await modeloInsertarProducto(producto) 
-        res.status(200).json(datos)  
+
+        const datos = await modeloInsertarProducto(producto);
+        res.status(201).json(datos);
     } catch (error) {
-        res.status(500).json(error)
+        res.status(500).json({ mensaje: error.message });
     }
 }
 
@@ -61,8 +64,14 @@ async function controladorModificarProductos(req, res) {
 async function controladorEliminarProducto(req, res) {
     try {
         const id = req.params.id;
+        const producto = await modeloObtenerProductoID(id);
+
+        if (producto.length === 0) {
+            return res.status(404).json({ mensaje: 'Producto no encontrado' });
+        }
+
         await modeloEliminarProducto(id);
-        res.status(204).send(); 
+        res.status(200).json({ mensaje: `Producto ${id} eliminado correctamente` });
     } catch (error) {
         res.status(500).json({ mensaje: 'Error en el servidor' });
     }

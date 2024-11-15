@@ -22,20 +22,21 @@ async function modeloObtenerProductoID(id){
 }
 
 //paso producto en singular porque necesito traer un solo datos POST
-async function modeloInsertarProducto(producto){
-    try{
-        //validar siempre los datos pero se hace en el tp4
-        const {nombre, precio, imagen} = producto
+async function modeloInsertarProducto(producto) {
+    try {
+        const { nombre, precio, imagen } = producto;
+        const rutaImagen = `/recursos/imagenes/${imagen}`;
         const resultado = await pool.query(
-            `INSERT INTO 
-            tienda(nombre, precio, imagen)
-            VALUES($1,$2,$3) RETURNING id`, [nombre, precio, imagen]);
-
-        return resultado.rows
-    }catch(error){
-        throw error
+            `INSERT INTO tienda (nombre, precio, imagen)
+             VALUES ($1, $2, $3) RETURNING id`,
+            [nombre, precio, rutaImagen]
+        );
+        return resultado.rows;
+    } catch (error) {
+        throw error;
     }
 }
+
 
 //PUT
 async function modeloModificarProducto(id, producto) {

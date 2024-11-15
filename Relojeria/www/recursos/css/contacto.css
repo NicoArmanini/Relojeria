@@ -1,30 +1,49 @@
 /************************************
 ************ CONTACTO ***************
 ************************************/
-
-* {
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family:'Courier New', Courier, monospace
-
 }
 
-.encabezado{
-    font-weight: bold;
-    background-color: #577B8D;
-    border-bottom-style: solid;
-    border-width: 3px;
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
 }
 
-.principal{
-    background-color: #F0ECE5;
-    padding-bottom: 58px;
+nav {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 10px;
+}
+
+main {
+    padding: 10px;
 }
 
 .pie{
     padding-top: 75px;
-    background-color: #9db7c3;
+    background-color: #333;
     border-top-style:solid;
     border-width: 3px;
 }
@@ -36,6 +55,7 @@
 h1{
     text-align: center;
     font-size: 60px;
+
 }
 
 nav{
@@ -46,13 +66,8 @@ nav{
     display: flex;
     gap: 30px;
     justify-content: center;
+    
 }
-
-nav a{
-    color: black;
-    text-decoration: none;
-}
-
 .container {
     display: flex;
     justify-content:center;

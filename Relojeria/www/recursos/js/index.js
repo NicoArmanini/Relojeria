@@ -1,89 +1,103 @@
-// Importa la función cargarProductos desde el archivo relojeria.js
-import { cargarProductos } from './relojeria.js';
-// Importa la función renderizarProductos desde el archivo productos.js
-import { renderizarProductos } from './productos.js';
 
-// Ejecuta la función cuando el documento ha terminado de cargar
-document.addEventListener('DOMContentLoaded', async () => {
-    // Obtiene el elemento del DOM donde se mostrarán los productos
-    const contenedorProductos = document.getElementById('id-productos');
-    // Obtiene el elemento del DOM donde se mostrará la lista del carrito
+// Obtención del contenedor de productos
+const container = document.getElementById('container');
+
+// Función para cargar productos desde la API
+async function cargarProductosAPI() {
+    try {
+        const response = await fetch('http://localhost:3000/api/v1/productos');
+        if (!response.ok) throw new Error('Error en la solicitud');
+        
+        const productos = await response.json(); 
+        renderizarProductosEnHTML(productos); // Llamar a la función para renderizar los productos en el HTML
+    } catch (error) {
+        console.error('Hubo un problema con la solicitud:', error);
+    }
+}
+
+// Función para renderizar productos dentro de la página
+function renderizarProductosEnHTML(arregloProductos) {
+    let productoHTML = '';
+    arregloProductos.forEach((producto) => {
+        productoHTML += `
+            <div class="producto">
+                <img src="${producto.imagen}" alt="${producto.nombre}">
+                <h3>${producto.nombre}</h3>
+                <p>${producto.precio} $</p>
+                <button class="agregar-carrito" data-id="${producto.id}" data-nombre="${producto.nombre}" data-precio="${producto.precio}">Agregar al Carrito</button>
+                <input type="number" class="cantidad" data-id="${producto.id}" value="1" min="1">
+            </div>`;
+    });
+    container.innerHTML = productoHTML;
+
+    // Asignar eventos a los botones de "Agregar al carrito"
+    document.querySelectorAll('.agregar-carrito').forEach(boton => {
+        boton.addEventListener('click', (e) => {
+            const productoId = e.target.dataset.id;
+            const productoNombre = e.target.dataset.nombre;
+            const productoPrecio = e.target.dataset.precio;
+            const cantidadInput = document.querySelector(`input[data-id="${productoId}"]`);
+            const cantidad = parseInt(cantidadInput.value);
+
+            agregarAlCarrito({ id: productoId, nombre: productoNombre, precio: productoPrecio, cantidad: cantidad });
+        });
+    });
+}
+
+// Función para agregar productos al carrito
+function agregarAlCarrito(producto) {
+    // Verificar si el producto ya está en el carrito
+    const productoExistente = carrito.find(item => item.id === producto.id);
+    if (productoExistente) {
+        // Si ya existe, actualizar la cantidad
+        productoExistente.cantidad += producto.cantidad;
+    } else {
+        // Si no existe, agregarlo al carrito
+        carrito.push(producto);
+    }
+    
+    actualizarCarrito();
+}
+
+// Función para actualizar el carrito en la vista
+function actualizarCarrito() {
     const listaCarrito = document.getElementById('lista-carrito');
-    // Obtiene el elemento del DOM donde se mostrará el total del carrito
     const totalCarrito = document.getElementById('total-carrito');
-    // Inicializa el array para almacenar los productos del carrito
-    const carrito = [];
-
-    // Carga los productos llamando a la función cargarProductos y espera a que termine
-    const productos = await cargarProductos();
-    // Llama a la función renderizarProductos para mostrar los productos en el contenedor
-    renderizarProductos(productos, contenedorProductos, carrito, listaCarrito, totalCarrito);
-
-    // Obtener el formulario de compra y escuchar el evento de envío
-    const formularioCompra = document.getElementById('formulario-compra');
-    formularioCompra.addEventListener('submit', (event) => {
-    event.preventDefault(); // Prevenir el envío del formulario por defecto
-
+    
+    // Limpiar el contenido del carrito
+    listaCarrito.innerHTML = '';
+    
     let total = 0;
-    // Crear un array con los detalles de cada producto en el carrito
-    const detallesCarrito = carrito.map(producto => ({
-        nombre: producto.nombre,
-        cantidad: producto.cantidad,
-        precioUnitario: producto.precio,
-        subtotal: (producto.precio * producto.cantidad).toFixed(2), // Calcular el precio total por producto
-        precioFinal: total += (producto.precio * producto.cantidad) // Inicializo un variable en 0 para que luego a la misma se le sumen todos los subtotales y generar el precio final
-    }));
-
-    // Convertir los detalles del carrito a JSON y asignarlo a un campo oculto en el formulario
-    document.getElementById('carrito-datos').value = JSON.stringify(detallesCarrito);
-
-    // Crear un objeto con todos los datos de la compra
-    const datosCompra = {
-        carrito: detallesCarrito // Incluir los detalles del carrito en el objeto de datos de compra
-    };
-
-    // Mostrar la confirmación de la compra en la misma página
-    mostrarConfirmacionCompra(datosCompra);
-
-     // Enviar el formulario
-     setTimeout(() => {
-        formularioCompra.submit();
-    }, 10000); // 20000 milisegundos = 20 segundos
+    carrito.forEach((producto) => {
+        total += producto.precio * producto.cantidad;
+        listaCarrito.innerHTML += `
+            <li>
+                ${producto.nombre} - $${producto.precio} x ${producto.cantidad}
+                <button class="eliminar-carrito" data-id="${producto.id}">Eliminar</button>
+            </li>`;
     });
 
-    
-   // Función para mostrar la confirmación de la compra dentro del dialog
-    function mostrarConfirmacionCompra(datosCompra) {
-    const confirmacionDiv = document.createElement('div');
-    confirmacionDiv.innerHTML = `
-        <h2>Compra Confirmada</h2>
-        <h6>Esta ventana desaparecera luego de 15 segundos</h6><br>
-        <h3>Detalles del Carrito</h3>
-        <ul>
-            ${datosCompra.carrito.map(item => `
-                <span><b>Nombre:</b> ${item.nombre}</span><br>
-                <span><b>Precio Unitario:</b> $${item.precioUnitario.toFixed(2)}</span><br>
-                <span><b>Cantidad:</b> ${item.cantidad}</span><br>
-                <span><b>Subtotal:</b> $${item.subtotal}</span><br>
-                <span><b>Precio Final: $${item.precioFinal}</b></span><br><br>
-            `).join('')}
-        </ul>
-    `;
+    totalCarrito.textContent = total.toFixed(2);
 
-    // Obtener el dialog de confirmación
-    const dialogConfirmacion = document.getElementById('myDialog-respuesta');
-    // Limpiar contenido previo del dialog
-    dialogConfirmacion.innerHTML = '';
-    // Agregar el contenido de confirmación al dialog
-    dialogConfirmacion.appendChild(confirmacionDiv);
-    
-    // Mostrar el dialog de confirmación
-    dialogConfirmacion.showModal();
-     // Cerrar el dialog después de 20 segundos
-     setTimeout(() => {
-        dialogConfirmacion.close();
-    }, 15000); //  20000 milisegundos = 20 segundos
-    }
+    // Asignar eventos a los botones de "Eliminar"
+    document.querySelectorAll('.eliminar-carrito').forEach(boton => {
+        boton.addEventListener('click', (e) => {
+            const productoId = e.target.dataset.id;
+            eliminarDelCarrito(productoId);
+        });
+    });
+}
 
+// Función para eliminar productos del carrito
+function eliminarDelCarrito(id) {
+    carrito = carrito.filter(producto => producto.id !== id);
+    actualizarCarrito();
+}
+
+// Inicializar el carrito vacío
+let carrito = [];
+
+// Ejecutar la función cuando el documento ha terminado de cargar
+document.addEventListener('DOMContentLoaded', () => {
+    cargarProductosAPI(); // Cargar los productos desde la API
 });
-
